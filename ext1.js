@@ -1,24 +1,19 @@
 (function(ext) {
-    // shutdown時に呼ばれる
+    // Cleanup function when the extension is unloaded
     ext._shutdown = function() {};
 
-    // statusを返してやる。デバイスとつながってない時とかここで色々返せる。
+    // Status reporting code
+    // Use this to report missing hardware, plugin or unsupported browser
     ext._getStatus = function() {
         return {status: 2, msg: 'Ready'};
     };
 
-    // blockが呼び出された時に呼ばれる関数を登録する。
-    // 下にあるdescriptorでブロックと関数のひも付けを行っている。
-    ext.do_domething = function(str) {
-    };
-
-    // ブロックと関数のひも付け
+    // Block and block menu descriptions
     var descriptor = {
         blocks: [
-            [' ', 'do_something %s', 'do_something', 'sample text'],
         ]
     };
 
-    // 最後にExtensionを登録する
-    ScratchExtensions.register('Simple extension', descriptor, ext);
+    // Register the extension
+    ScratchExtensions.register('Sample extension', descriptor, ext);
 })({});
